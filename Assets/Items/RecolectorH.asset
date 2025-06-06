@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 174619f667352984e9a17ad31bece5d6, type: 3}
+  m_Name: RecolectorH
+  m_EditorClassIdentifier: 
+  itemName: Recolector de huellas
+  type: 1
+  description: Herramienta para recolectar huellas dactilares
+  icon: {fileID: 21300000, guid: dcec2dd4997123d408cdcf00c0443b63, type: 3}
+  isKeyItem: 0
+  isEvidence: 0
+  compatibleStyles:
+  - Investigative
