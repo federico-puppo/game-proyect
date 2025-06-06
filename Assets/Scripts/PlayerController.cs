@@ -4,7 +4,12 @@ public class PlayerController : MonoBehaviour
 {
     public Animator animator;
     public float speed = 5f;
+    private Rigidbody rb;
 
+    void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
     void Update()
     {
         float h = Input.GetAxis("Horizontal"); // A/D o ←/→
@@ -25,5 +30,23 @@ public class PlayerController : MonoBehaviour
             Quaternion toRotation = Quaternion.LookRotation(move, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 720 * Time.deltaTime);
         }
+
+        if (move != Vector3.zero)
+        {
+            Quaternion toRotation = Quaternion.LookRotation(move, Vector3.up);
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 720 * Time.deltaTime);
+        }
+
+        MoveCharacter(move);
+    }
+
+    void MoveCharacter(Vector3 move)
+    {
+        if (rb != null)
+        {
+            Vector3 movePos = rb.position + move.normalized * speed * Time.deltaTime;
+            rb.MovePosition(movePos);
+        }
     }
 }
+
