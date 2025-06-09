@@ -163,5 +163,10 @@ public class InventoryManager : MonoBehaviour
     {
         return new List<GameItem>(equippedItems);
     }
+    
+    public List<GameItem> GetItems()
+    {
+        return new List<GameItem>(items);
+    }
 
 }
