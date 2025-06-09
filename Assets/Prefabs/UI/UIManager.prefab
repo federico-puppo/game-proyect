@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6107434383172688648
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 145292040824725997}
+  - component: {fileID: 4156702459607696763}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &145292040824725997
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6107434383172688648}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.021761283, y: -6.593588, z: 100.61275}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4156702459607696763
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6107434383172688648}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5bb8d368c0573b64ea6f751a38594038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneEnterButton: {fileID: 0}
+  allSlots:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  includedCubePrefabs:
+  - {fileID: 2807012661117226899, guid: 54f75011fd69c414a8b8fdb0fdd565e2, type: 3}
+  - {fileID: 2807012661117226899, guid: d6f675711d7475d4f9c5fb03e0de72c3, type: 3}
+  - {fileID: 64557205769115482, guid: b07dfa1efef230f44b055e71c6e953e1, type: 3}
+  - {fileID: 2807012661117226899, guid: c8b01a4bcc5d3634dbf4a1c1a7a6b8c0, type: 3}
+  - {fileID: 2807012661117226899, guid: 1b3d8a7fb52bb6544b4aab4af463e6c9, type: 3}
+  - {fileID: 2807012661117226899, guid: baed2a97e13875e4292d7074268cf5e9, type: 3}
+  - {fileID: 64557205769115482, guid: d88a95e019515a241aab32e797c5da56, type: 3}
+  excludedCubePrefabs:
+  - {fileID: 2104046387684569364, guid: 8d51b4cc786988c44a7416d5c5e3e460, type: 3}
+  - {fileID: 8797248017597576036, guid: b75dbd877a85b334fa19d4db5210d533, type: 3}
+  - {fileID: 2104046387684569364, guid: 6335288115ea40a498e1a89e38acf528, type: 3}
+  - {fileID: 8797248017597576036, guid: aefcf40efdeefe24eb34da5adc525281, type: 3}
+  - {fileID: 2104046387684569364, guid: 4313aab86c31f354aa013ae88b26faf4, type: 3}
+  minimumPrefabCount: 2
+  defaultButtonColor: {r: 1, g: 1, b: 1, a: 0.30980393}
