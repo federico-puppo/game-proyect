@@ -4,7 +4,6 @@ using System.Linq;
 using TMPro;
 using UnityEngine.UI;
 
-
 [System.Serializable]
 public class PlayerInventory
 {
@@ -13,11 +12,12 @@ public class PlayerInventory
     {
         public string itemName;
         public bool isEquipped;
+
+        // Esto no lo usamos por ahora
+        // private string nextSceneAfterUI = "";
     }
 
     public List<InventoryItem> items = new List<InventoryItem>();
-
-
 
     public void AddItem(string itemName)
     {
@@ -94,6 +94,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private bool hasMadeStyleChoice = false;
     private string currentStyle = "";
+    private string nextScene = "";  // Usamos esta 
 
     private void Awake()
     {
@@ -160,7 +161,7 @@ public class GameManager : MonoBehaviour
         if (uiCanvas != null)
         {
             Transform buttonsPanel = uiCanvas.transform.Find("Pannel General/Panel Buttons");
-            TMP_Text feedbackText = uiCanvas.transform.Find("FeedbackText")?.GetComponent<TMP_Text>(); // Agrega un objeto Text
+            TMP_Text feedbackText = uiCanvas.transform.Find("FeedbackText")?.GetComponent<TMP_Text>();
 
             if (buttonsPanel != null)
             {
@@ -198,22 +199,16 @@ public class GameManager : MonoBehaviour
         return missing;
     }
 
-
     public void SaveGame()
     {
-        // Guardar estilo
         PlayerPrefs.SetString("SavedStyle", currentStyle);
 
-        // Obtener los ítems equipados desde InventoryManager
         List<GameItem> equipped = InventoryManager.Instance.GetEquippedItems();
-
-        // Guardar solo los nombres
         List<string> equippedItemNames = equipped.Select(i => i.itemName).ToList();
 
         PlayerPrefs.SetString("EquippedItems", string.Join(",", equippedItemNames));
         PlayerPrefs.Save();
     }
-
 
     public void LoadGame()
     {
@@ -234,12 +229,21 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-    // Método para reiniciar el juego
     public void ResetGame()
     {
         hasMadeStyleChoice = false;
         currentStyle = "";
         InventoryManager.Instance.ResetInventory();
+    }
+
+    // NUEVA lógica para intercalar escenas con la UI
+    public void SetNextScene(string sceneName)
+    {
+        nextScene = sceneName;
+    }
+
+    public string GetNextScene()
+    {
+        return nextScene;
     }
 }

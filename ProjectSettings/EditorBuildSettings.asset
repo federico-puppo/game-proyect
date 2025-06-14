@@ -15,6 +15,18 @@ EditorBuildSettings:
     path: Assets/Scenes/Ofice.unity
     guid: 0714ce813984074408f7bc351efd21d9
   - enabled: 1
-    path: Assets/Scenes/UI/Mental_UI_Scene.unity
+    path: Assets/Scenes/CrimeScene.unity
+    guid: 2dcbcba2575f0e849941889e0e203700
+  - enabled: 1
+    path: Assets/Scenes/UI/MentalUI.unity
     guid: 5df935cb74826d3459ef219bf51b887a
+  - enabled: 1
+    path: Assets/Scenes/Bar.unity
+    guid: 39e0f3f10c3abb84d815f3f819b68797
+  - enabled: 1
+    path: Assets/Scenes/NewspapperOffice.unity
+    guid: 2556b4c15b5ba8e4e8934af21f1a94e9
+  - enabled: 1
+    path: Assets/Scenes/FinalBattle.unity
+    guid: 439ed4f4ddb569f41b523c11e92c0d66
   m_configObjects: {}
