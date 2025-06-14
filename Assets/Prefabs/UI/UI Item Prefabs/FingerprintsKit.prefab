@@ -16,6 +16,8 @@ GameObject:
   - component: {fileID: 8610857783723751102}
   - component: {fileID: -3319690688031905792}
   - component: {fileID: -1847121643099606054}
+  - component: {fileID: -4942336553770005}
+  - component: {fileID: -9017064117020657274}
   m_Layer: 3
   m_Name: FingerprintsKit
   m_TagString: Untagged
@@ -166,6 +168,40 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 8a8e2c8e0165a044b9e91fe17fd82964, type: 2}
+--- !u!114 &-4942336553770005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64557205769115482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 26b488d7584c5aa469d4141edbb5e597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 0}
+--- !u!65 &-9017064117020657274
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64557205769115482}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6313143778143606290
 GameObject:
   m_ObjectHideFlags: 0

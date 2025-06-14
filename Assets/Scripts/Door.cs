@@ -1,29 +1,37 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Door : MonoBehaviour
 {
     [SerializeField] private string targetSceneName;
+
+    // 🔸 Esto todavía no lo usamos
     [SerializeField] private GameObject styleSelectionUI;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            // 🔸 Esto todavía no lo usamos
             ShowStyleSelection();
+
+            // ✅ Esto sí lo usamos: guardar la escena real y pasar a la UI
+            GameManager.Instance.SetNextScene(targetSceneName);
+            SceneManager.LoadScene("MentalUI");
         }
     }
 
+    // 🔸 Esto todavía no lo usamos
     private void ShowStyleSelection()
     {
         if (styleSelectionUI != null)
         {
             styleSelectionUI.SetActive(true);
-            
-            // Actualizar las opciones disponibles basado en los items equipados
             GameManager.Instance.UpdateStyleOptions();
         }
     }
 
+    // 🔸 Esto todavía no lo usamos
     public void SelectStyle(string style)
     {
         if (styleSelectionUI != null)
@@ -57,9 +65,9 @@ public class Door : MonoBehaviour
         }
     }
 
+    // 🔸 Esto todavía no lo usamos
     private void LoadTargetScene()
     {
-        // Aquí iría la lógica para cargar la escena objetivo
         // Puedes usar SceneManager.LoadScene(targetSceneName);
     }
 }

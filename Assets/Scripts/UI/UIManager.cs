@@ -139,8 +139,8 @@ public class UIManager : MonoBehaviour
 
     public void OnClickSceneEnter()
     {
-        GuardarItemsSeleccionados();
-        SceneManager.LoadScene("Ofice"); // Recordá reemplazar esto por el nombre real
+        string next = PlayerPrefs.GetString("NextSceneAfterUI", "SampleScene");
+        SceneManager.LoadScene(GameManager.Instance.GetNextScene());
     }
 
     public void GuardarItemsSeleccionados()
