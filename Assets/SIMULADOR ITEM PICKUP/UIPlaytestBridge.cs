@@ -33,7 +33,7 @@ public class UIPlaytestBridge : MonoBehaviour
         {
             goToUISceneButton.onClick.AddListener(() =>
             {
-                SceneManager.LoadScene("Mental_UI_Scene");
+                SceneManager.LoadScene("MentalUI");
             });
         }
     }
