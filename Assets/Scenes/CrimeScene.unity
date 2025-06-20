@@ -1461,6 +1461,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ClueExtraCrimeScene
       objectReference: {fileID: 0}
+    - target: {fileID: 2104046387684569364, guid: 85727bf33e9059a499db28befc9aa7e7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6214432570571388006, guid: 85727bf33e9059a499db28befc9aa7e7,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1478,7 +1488,7 @@ GameObject:
   - component: {fileID: 294517880}
   - component: {fileID: 294517879}
   - component: {fileID: 294517878}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BloodStainFloor (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2264,7 +2274,7 @@ GameObject:
   - component: {fileID: 359909767}
   - component: {fileID: 359909766}
   - component: {fileID: 359909765}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BloodStainFloor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2370,7 +2380,7 @@ GameObject:
   - component: {fileID: 361362215}
   - component: {fileID: 361362214}
   - component: {fileID: 361362213}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BloodStainFloor (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2726,7 +2736,7 @@ GameObject:
   - component: {fileID: 415672700}
   - component: {fileID: 415672699}
   - component: {fileID: 415672698}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BloodStainFloor (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3195,7 +3205,7 @@ GameObject:
   - component: {fileID: 535998119}
   - component: {fileID: 535998118}
   - component: {fileID: 535998117}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BloodStain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4064,7 +4074,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &832575518
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4399,7 +4409,7 @@ GameObject:
   - component: {fileID: 938442502}
   - component: {fileID: 938442501}
   - component: {fileID: 938442500}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BloodStainSteps (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5054,7 +5064,7 @@ GameObject:
   - component: {fileID: 1012377141}
   - component: {fileID: 1012377140}
   - component: {fileID: 1012377139}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BloodStainSteps (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5160,7 +5170,7 @@ GameObject:
   - component: {fileID: 1018346308}
   - component: {fileID: 1018346307}
   - component: {fileID: 1018346306}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BloodStainFloor (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5447,7 +5457,7 @@ GameObject:
   - component: {fileID: 1112123504}
   - component: {fileID: 1112123503}
   - component: {fileID: 1112123502}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BloodStainFloor (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5877,6 +5887,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: BloodyPaper
       objectReference: {fileID: 0}
+    - target: {fileID: 2104046387684569364, guid: a855b0fbf89456741bd227506cd0e024,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5682742990317433328, guid: a855b0fbf89456741bd227506cd0e024,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6183,6 +6203,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Agenda
+      objectReference: {fileID: 0}
+    - target: {fileID: 2104046387684569364, guid: bd923569f22cb284f951e703c68084a1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6214432570571388006, guid: bd923569f22cb284f951e703c68084a1,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6642912639597381850, guid: bd923569f22cb284f951e703c68084a1,
         type: 3}
@@ -6927,7 +6957,7 @@ GameObject:
   - component: {fileID: 1490024929}
   - component: {fileID: 1490024928}
   - component: {fileID: 1490024927}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BloodStainSteps (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7160,7 +7190,7 @@ GameObject:
   - component: {fileID: 1504226015}
   - component: {fileID: 1504226014}
   - component: {fileID: 1504226013}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BloodStainSteps
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7824,7 +7854,7 @@ GameObject:
   - component: {fileID: 1639641677}
   - component: {fileID: 1639641676}
   - component: {fileID: 1639641675}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BloodStainFloor (6)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8001,6 +8031,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Puerta2
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 57cbcdb4440e9674fa81c658a83550aa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1151388028547126963, guid: 57cbcdb4440e9674fa81c658a83550aa,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -8010,6 +8045,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 1.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8164078558771037576, guid: 57cbcdb4440e9674fa81c658a83550aa,
+        type: 3}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -8040,7 +8080,7 @@ GameObject:
   - component: {fileID: 1712094728}
   - component: {fileID: 1712094727}
   - component: {fileID: 1712094726}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BloodStainSteps (5)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8543,7 +8583,7 @@ GameObject:
   - component: {fileID: 1769762532}
   - component: {fileID: 1769762531}
   - component: {fileID: 1769762530}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BloodStainSteps (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8914,7 +8954,7 @@ GameObject:
   - component: {fileID: 1874383662}
   - component: {fileID: 1874383661}
   - component: {fileID: 1874383660}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BloodStainFloor (8)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9059,7 +9099,7 @@ GameObject:
   - component: {fileID: 1922992221}
   - component: {fileID: 1922992220}
   - component: {fileID: 1922992219}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BloodStainFloor (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9707,7 +9747,7 @@ GameObject:
   - component: {fileID: 2109539403}
   - component: {fileID: 2109539402}
   - component: {fileID: 2109539401}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: BloodStainFloor (7)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9926,10 +9966,125 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 53051503674662108, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 555563636332591550, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 625596079000007323, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 934649888136721739, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1351652352697146872, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1449813623865150976, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1564633205340603516, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1709744677897936080, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1908384502237591916, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2395049962670231330, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2753500149377003744, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3185993049206627511, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4234244626248910196, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4907549694890368699, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4930542410451352530, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5022710906391098367, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 5049812190703479664, guid: cba5e077ead3d044db57e18af5fe0e57,
         type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 5049812190703479664, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5174864002549646395, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5219989260434240498, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5352080159150529790, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5821035465638194722, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5875096313738688563, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 5930488976400237394, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6220131594319244391, guid: cba5e077ead3d044db57e18af5fe0e57,
         type: 3}
@@ -9981,6 +10136,91 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6345206138643367047, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6399407076045064931, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6423439358731560116, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6717310820561228136, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6755428178031526902, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6984178472470949877, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7145136853089143982, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7923779762319406009, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8055071511263493894, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8274042958241454152, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8b70686c6e6496a4da23817f01f57ab0, type: 2}
+    - target: {fileID: 8516472905390371728, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8710817751444134870, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Drag
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8710817751444134870, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Mass
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8710817751444134870, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_AngularDrag
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8813727142064135492, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9042305056439797266, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 9155036586653506763, guid: cba5e077ead3d044db57e18af5fe0e57,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -9994,10 +10234,20 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3154548970707758492, guid: 7ad94f529bcf5f0438f0a85a79f00bad,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 6218062005421430085, guid: 7ad94f529bcf5f0438f0a85a79f00bad,
         type: 3}
       propertyPath: m_Name
       value: Puerta
+      objectReference: {fileID: 0}
+    - target: {fileID: 6218062005421430085, guid: 7ad94f529bcf5f0438f0a85a79f00bad,
+        type: 3}
+      propertyPath: m_Layer
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 6701689258413854719, guid: 7ad94f529bcf5f0438f0a85a79f00bad,
         type: 3}

@@ -12,15 +12,23 @@ public class PlayerInventory
     {
         public string itemName;
         public bool isEquipped;
-
-        // Esto no lo usamos por ahora
-        // private string nextSceneAfterUI = "";
     }
 
+    public int maxItems = 5;
     public List<InventoryItem> items = new List<InventoryItem>();
 
     public void AddItem(string itemName)
     {
+        if (items.Count >= maxItems)
+        {
+            InventoryPopup popup = GameObject.FindObjectOfType<InventoryPopup>();
+            if (popup != null)
+            {
+                popup.ShowMessage("Inventario lleno. No se puede agregar el item.");
+            }
+            return;
+        }
+
         InventoryItem item = items.Find(i => i.itemName == itemName);
         if (item != null)
         {
@@ -94,7 +102,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private bool hasMadeStyleChoice = false;
     private string currentStyle = "";
-    private string nextScene = "";  // Usamos esta 
+    private string nextScene = "";
 
     private void Awake()
     {
@@ -109,13 +117,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    // Métodos para gestionar los estilos
     public void ChooseAggressive()
     {
         if (CanUseStyle("Aggressive") && !hasMadeStyleChoice)
         {
             currentStyle = "Aggressive";
             hasMadeStyleChoice = true;
+            RefreshInventoryUI();
         }
     }
 
@@ -125,6 +133,7 @@ public class GameManager : MonoBehaviour
         {
             currentStyle = "Investigative";
             hasMadeStyleChoice = true;
+            RefreshInventoryUI();
         }
     }
 
@@ -134,13 +143,13 @@ public class GameManager : MonoBehaviour
         {
             currentStyle = "Stealth";
             hasMadeStyleChoice = true;
+            RefreshInventoryUI();
         }
     }
 
     public string GetCurrentStyle() => currentStyle;
     public bool HasMadeChoice() => hasMadeStyleChoice;
 
-    // Verificar si se puede usar un estilo basado en los items equipados
     public bool CanUseStyle(string style)
     {
         List<GameItem> requiredItems = InventoryManager.Instance.GetItemsByStyle(style);
@@ -154,7 +163,6 @@ public class GameManager : MonoBehaviour
         return true;
     }
 
-    // Método para actualizar las opciones disponibles en la UI
     public void UpdateStyleOptions()
     {
         GameObject uiCanvas = GameObject.Find("StyleSelectionUI");
@@ -202,10 +210,8 @@ public class GameManager : MonoBehaviour
     public void SaveGame()
     {
         PlayerPrefs.SetString("SavedStyle", currentStyle);
-
         List<GameItem> equipped = InventoryManager.Instance.GetEquippedItems();
         List<string> equippedItemNames = equipped.Select(i => i.itemName).ToList();
-
         PlayerPrefs.SetString("EquippedItems", string.Join(",", equippedItemNames));
         PlayerPrefs.Save();
     }
@@ -213,7 +219,6 @@ public class GameManager : MonoBehaviour
     public void LoadGame()
     {
         currentStyle = PlayerPrefs.GetString("SavedStyle", "");
-
         string equipped = PlayerPrefs.GetString("EquippedItems", "");
         if (!string.IsNullOrEmpty(equipped))
         {
@@ -227,6 +232,8 @@ public class GameManager : MonoBehaviour
                 }
             }
         }
+
+        RefreshInventoryUI();
     }
 
     public void ResetGame()
@@ -234,9 +241,9 @@ public class GameManager : MonoBehaviour
         hasMadeStyleChoice = false;
         currentStyle = "";
         InventoryManager.Instance.ResetInventory();
+        RefreshInventoryUI();
     }
 
-    // NUEVA lógica para intercalar escenas con la UI
     public void SetNextScene(string sceneName)
     {
         nextScene = sceneName;
@@ -245,5 +252,12 @@ public class GameManager : MonoBehaviour
     public string GetNextScene()
     {
         return nextScene;
+    }
+
+    public void RefreshInventoryUI()
+    {
+        InventoryUIRenderer ui = FindObjectOfType<InventoryUIRenderer>();
+        if (ui != null)
+            ui.UpdateUI();
     }
 }
