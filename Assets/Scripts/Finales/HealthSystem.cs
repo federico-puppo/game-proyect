@@ -20,6 +20,7 @@ public class HealthSystem : MonoBehaviour
         currentHealth = maxHealth;
         animator = GetComponent<Animator>();
         UpdateHealthBar();
+        
     }
 
     public void TakeDamage(float amount)

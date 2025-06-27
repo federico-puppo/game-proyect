@@ -8,9 +8,14 @@ public class EnemyShootingController : MonoBehaviour
     public float shootingInterval = 2f;
     public float bulletSpeed = 10f;
     public float rotationSpeed = 5f;
+    private Animator animator;
 
     private float timer;
-
+    void Awake()
+    {
+        animator = GetComponent<Animator>();
+        animator.SetBool("Pistol",true);
+    }
     void Update()
     {
         if (player == null) return;
@@ -34,6 +39,7 @@ public class EnemyShootingController : MonoBehaviour
     {
         if (bulletPrefab != null && bulletSpawnPoint != null)
         {
+            animator.SetTrigger("Shoot");
             GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
             Rigidbody rb = bullet.GetComponent<Rigidbody>();
             if (rb != null)

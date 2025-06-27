@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Slot
   - Enemy
+  - Bullet
   layers:
   - Default
   - TransparentFX
