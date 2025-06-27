@@ -33,6 +33,7 @@ public class GunCombatController : MonoBehaviour
 
         if (animator != null)
             animator.SetBool("IsWalking", move.magnitude > 0.1f);
+            animator.SetBool("Pistol",true);
 
         Vector3 movePos = transform.position + move.normalized * speed * Time.deltaTime;
         rb.MovePosition(movePos);
@@ -61,6 +62,7 @@ public class GunCombatController : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) && bulletPrefab != null && bulletSpawnPoint != null)
         {
+            animator.SetTrigger("Shoot");
             GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
             Rigidbody rbBullet = bullet.GetComponent<Rigidbody>();
             if (rbBullet != null)

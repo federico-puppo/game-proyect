@@ -3,13 +3,16 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     public Animator animator;
-    public float speed = 5f;
+    public float speed = .6f;
+    public float runSpeed = 1.2f; // nueva velocidad al correr
+
     private Rigidbody rb;
 
     void Start()
     {
         rb = GetComponent<Rigidbody>();
     }
+
     void Update()
     {
         float h = Input.GetAxis("Horizontal"); // A/D o ←/→
@@ -17,12 +20,19 @@ public class PlayerController : MonoBehaviour
 
         Vector3 move = new Vector3(h, 0f, v);
 
-        // Activar animación solo si hay input
-        if (animator != null)
-            animator.SetBool("IsWalking", move.magnitude > 0.1f);
+        // Determinar si está corriendo
+        bool isRunning = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+        float currentSpeed = isRunning ? runSpeed : speed;
 
-        // Mover el personaje
-        transform.Translate(move.normalized * speed * Time.deltaTime, Space.World);
+        // Activar animaciones
+        if (animator != null)
+        {
+            // Activar animación de caminar solo si hay input y no está corriendo
+            animator.SetBool("IsWalking", move.magnitude > 0.1f && !isRunning);
+
+            // Activar animación de correr si está presionando shift y hay input
+            animator.SetBool("IsRunning", isRunning && move.magnitude > 0.1f);
+        }
 
         // Opcional: rotar hacia la dirección en la que camina
         if (move != Vector3.zero)
@@ -31,22 +41,16 @@ public class PlayerController : MonoBehaviour
             transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 720 * Time.deltaTime);
         }
 
-        if (move != Vector3.zero)
-        {
-            Quaternion toRotation = Quaternion.LookRotation(move, Vector3.up);
-            transform.rotation = Quaternion.RotateTowards(transform.rotation, toRotation, 720 * Time.deltaTime);
-        }
-
-        MoveCharacter(move);
+        MoveCharacter(move, currentSpeed);
     }
 
-    void MoveCharacter(Vector3 move)
+    void MoveCharacter(Vector3 move, float currentSpeed)
     {
         if (rb != null)
         {
-            Vector3 movePos = rb.position + move.normalized * speed * Time.deltaTime;
+            // Mover el personaje usando física
+            Vector3 movePos = rb.position + move.normalized * currentSpeed * Time.deltaTime;
             rb.MovePosition(movePos);
         }
     }
 }
-
