@@ -16,6 +16,9 @@ MonoBehaviour:
   type: 2
   description: Abre una puerta importante
   icon: {fileID: 21300000, guid: b00b4e973bf393e4e86abce9ea439bc1, type: 3}
-  isKeyItem: 1
-  isEvidence: 0
+  galleryImage: {fileID: 0}
+  isKeyItem: 0
+  isEvidence: 1
+  isRevelationClue: 0
+  isEquippedInitially: 0
   compatibleStyles: []

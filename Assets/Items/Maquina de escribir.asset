@@ -12,10 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 174619f667352984e9a17ad31bece5d6, type: 3}
   m_Name: Maquina de escribir
   m_EditorClassIdentifier: 
-  itemName: "M\xE1quina de escribir"
-  type: 2
-  description: Alguien escribio algo
-  icon: {fileID: 21300000, guid: 050c30eb72307f54fb4a66c4218b7399, type: 3}
+  itemName: "Hoja en la m\xE1quina de escribir"
+  type: 3
+  description: "Una hoja en la Remington de Esteban Rojas, a\xFAn cargada en el rodillo.
+    La tinta est\xE1 fresca, la frase inconclusa\u2026 pero no deja lugar a dudas.
+    El periodista se hab\xEDa quebrado. Hab\xEDa cruzado la l\xEDnea."
+  icon: {fileID: 21300000, guid: ed9affefee1a3b54caeea9f6c6960053, type: 3}
+  galleryImage: {fileID: 21300000, guid: 1fc8fbe7d165add4d9ee6c96a4d4b790, type: 3}
   isKeyItem: 1
-  isEvidence: 0
+  isEvidence: 1
+  isRevelationClue: 1
+  isEquippedInitially: 0
   compatibleStyles: []

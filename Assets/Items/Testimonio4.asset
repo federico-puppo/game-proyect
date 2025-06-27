@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 174619f667352984e9a17ad31bece5d6, type: 3}
+  m_Name: Testimonio4
+  m_EditorClassIdentifier: 
+  itemName: "Grabaci\xF3n de conversaci\xF3n"
+  type: 3
+  description: "Un casete viejo, con una etiqueta desgastada. Al reproducirlo, se
+    escucha a Rojas discutiendo con alguien sobre \u201Cel juicio\u201D y \u201Cuna
+    oportunidad de redenci\xF3n\u201D. La cinta se corta abruptamente."
+  icon: {fileID: 21300000, guid: 40a4dd903a5cd114db9c96948db1365a, type: 3}
+  galleryImage: {fileID: 21300000, guid: 98b60516e50adc84e89361814addef7b, type: 3}
+  isKeyItem: 0
+  isEvidence: 1
+  isRevelationClue: 0
+  isEquippedInitially: 0
+  compatibleStyles: []

@@ -15,8 +15,11 @@ MonoBehaviour:
   itemName: Arma
   type: 0
   description: Un arma letal para confrontaciones directas
-  icon: {fileID: 21300000, guid: 48843d1f38279a344a07786990d0a762, type: 3}
+  icon: {fileID: 21300000, guid: 0d1d3d94d13ab664d80fce3883d1c8ae, type: 3}
+  galleryImage: {fileID: 0}
   isKeyItem: 0
   isEvidence: 0
+  isRevelationClue: 0
+  isEquippedInitially: 1
   compatibleStyles:
   - Aggressive

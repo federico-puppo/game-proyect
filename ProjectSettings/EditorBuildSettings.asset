@@ -6,20 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/UI/MainMenu.unity
-    guid: ac230420f5d94944b96ea56ae727c53e
+    path: Assets/Scenes/MenuPrincipal.unity
+    guid: 7ee99b0bde2e4dc40b3de5eaf8d62961
+  - enabled: 1
+    path: Assets/Scenes/Oficina.unity
+    guid: 0714ce813984074408f7bc351efd21d9
   - enabled: 1
     path: Assets/Scenes/SampleScene.unity
     guid: 99c9720ab356a0642a771bea13969a05
   - enabled: 1
-    path: Assets/Scenes/Ofice.unity
-    guid: 0714ce813984074408f7bc351efd21d9
-  - enabled: 1
     path: Assets/Scenes/CrimeScene.unity
     guid: 2dcbcba2575f0e849941889e0e203700
-  - enabled: 1
-    path: Assets/Scenes/UI/MentalUI.unity
-    guid: 5df935cb74826d3459ef219bf51b887a
   - enabled: 1
     path: Assets/Scenes/Bar.unity
     guid: 39e0f3f10c3abb84d815f3f819b68797
@@ -27,6 +24,18 @@ EditorBuildSettings:
     path: Assets/Scenes/NewspapperOffice.unity
     guid: 2556b4c15b5ba8e4e8934af21f1a94e9
   - enabled: 1
-    path: Assets/Scenes/FinalBattle.unity
-    guid: 439ed4f4ddb569f41b523c11e92c0d66
+    path: Assets/Scenes/FinalesScenes/FinalBueno.unity
+    guid: 045f5c3554f65754f919e81d7006bb50
+  - enabled: 1
+    path: Assets/Scenes/FinalesScenes/FinalMalo.unity
+    guid: a45eb0a1248dcb148aa12e1d70e05f4b
+  - enabled: 1
+    path: Assets/Scenes/FinalesScenes/Confrontacion.unity
+    guid: a990d6ac695f48048acc1abd3462e616
+  - enabled: 1
+    path: Assets/Scenes/FinalesScenes/FinalConfrontacionWin.unity
+    guid: ed8242bfd7c34984bb0b211452551dd8
+  - enabled: 1
+    path: Assets/Scenes/FinalesScenes/FinalConfrontacionLose.unity
+    guid: e83a691ac47f1ad4196ddfa5850a3941
   m_configObjects: {}

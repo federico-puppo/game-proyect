@@ -5,10 +5,10 @@ public class InventoryManager : MonoBehaviour
 {
     public static InventoryManager Instance { get; private set; }
 
-    [SerializeField] private List<GameItem> items = new List<GameItem>();
-    [SerializeField] private List<GameItem> equippedItems = new List<GameItem>();
-    [SerializeField] private List<GameItem> keyItems = new List<GameItem>();
-    [SerializeField] private List<GameItem> evidence = new List<GameItem>();
+    private List<GameItem> items = new List<GameItem>();
+    private List<GameItem> equippedItems = new List<GameItem>();
+    private List<GameItem> keyItems = new List<GameItem>();
+    private List<GameItem> evidence = new List<GameItem>();
 
     private void Awake()
     {
@@ -23,32 +23,28 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    // Métodos para manejar objetos
-
-    public void AddItem(GameItem item)
-    {
-        if (!items.Contains(item))
-        {
-            items.Add(item);
-
-            if (item.isKeyItem)
-                keyItems.Add(item);
-            if (item.isEvidence)
-                evidence.Add(item);
-        }
-    }
     public void AddItem(GameItemData data)
     {
-        GameItem item = new GameItem(data.itemName, data.type, data.description, data.icon)
+        GameItem item = new GameItem(
+            data.itemName,
+            data.type,
+            data.description,
+            data.icon,
+            data.galleryImage
+        )
         {
             isKeyItem = data.isKeyItem,
             isEvidence = data.isEvidence,
             compatibleStyles = new List<string>(data.compatibleStyles)
         };
 
-        AddItem(item); // llamada al método anterior
-    }
+        items.Add(item);
+        if (item.isKeyItem) keyItems.Add(item);
+        if (item.isEvidence) evidence.Add(item);
+        if (!equippedItems.Contains(item)) equippedItems.Add(item);
 
+        FindObjectOfType<InventoryUIRenderer>()?.UpdateUI();
+    }
 
     public void RemoveItem(GameItem item)
     {
@@ -79,79 +75,9 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    // Métodos para verificar objetos
     public bool HasItem(string itemName)
     {
         return items.Exists(i => i.itemName == itemName);
-    }
-
-    public bool HasEquippedItem(GameItem item)
-    {
-        return equippedItems.Contains(item);
-    }
-
-    public bool HasKeyItem(string itemName)
-    {
-        return keyItems.Exists(i => i.itemName == itemName);
-    }
-
-    public bool HasEvidence(string itemName)
-    {
-        return evidence.Exists(i => i.itemName == itemName);
-    }
-
-    // Métodos para obtener listas de objetos
-    public List<GameItem> GetItemsByType(GameItem.ItemType type)
-    {
-        return items.FindAll(i => i.type == type);
-    }
-
-    public List<GameItem> GetItemsByStyle(string style)
-    {
-        return items.FindAll(i => i.compatibleStyles.Contains(style));
-    }
-
-    // Método para reiniciar el inventario
-    public void ResetInventory()
-    {
-        items.Clear();
-        equippedItems.Clear();
-        keyItems.Clear();
-        evidence.Clear();
-    }
-
-    // Método para actualizar la UI del inventario
-    public void UpdateInventoryUI()
-    {
-        // Aquí iría la lógica para actualizar la UI del inventario
-        // Por ejemplo, si tienes un Canvas con diferentes secciones:
-        GameObject inventoryUI = GameObject.Find("InventoryUI");
-        if (inventoryUI != null)
-        {
-            // Actualizar la UI de los items equipados
-            UpdateEquippedItemsUI();
-
-            // Actualizar la UI de los key items
-            UpdateKeyItemsUI();
-
-            // Actualizar la UI de las evidencias
-            UpdateEvidenceUI();
-        }
-    }
-
-    private void UpdateEquippedItemsUI()
-    {
-        // Aquí iría la lógica para actualizar la UI de los items equipados
-    }
-
-    private void UpdateKeyItemsUI()
-    {
-        // Aquí iría la lógica para actualizar la UI de los key items
-    }
-
-    private void UpdateEvidenceUI()
-    {
-        // Aquí iría la lógica para actualizar la UI de las evidencias
     }
 
     public GameItem FindItemByName(string name)
@@ -159,14 +85,14 @@ public class InventoryManager : MonoBehaviour
         return items.Find(i => i.itemName == name);
     }
 
-    public List<GameItem> GetEquippedItems()
-    {
-        return new List<GameItem>(equippedItems);
-    }
-    
-    public List<GameItem> GetItems()
-    {
-        return new List<GameItem>(items);
-    }
+    public List<GameItem> GetEquippedItems() => new List<GameItem>(equippedItems);
+    public List<GameItem> GetItems() => new List<GameItem>(items);
 
+    public void ResetInventory()
+    {
+        items.Clear();
+        equippedItems.Clear();
+        keyItems.Clear();
+        evidence.Clear();
+    }
 }

@@ -12,10 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 174619f667352984e9a17ad31bece5d6, type: 3}
   m_Name: Agenda
   m_EditorClassIdentifier: 
-  itemName: Agenda
-  type: 2
-  description: Contiene anotaciones cruciales
-  icon: {fileID: 0}
-  isKeyItem: 1
-  isEvidence: 0
+  itemName: Agenda de bolsillo
+  type: 3
+  description: "Una agenda del a\xF1o pasado con fechas marcadas en rojo. Entre citas
+    y nombres, hay un n\xFAmero anotado dos veces con distinta caligraf\xEDa: \u201C137
+    - El Refugio\u201D."
+  icon: {fileID: 21300000, guid: a286728724a012840ac51b93ba7e5a7f, type: 3}
+  galleryImage: {fileID: 21300000, guid: 34fd6e19aedee194d81136ab8a4a39a0, type: 3}
+  isKeyItem: 0
+  isEvidence: 1
+  isRevelationClue: 0
+  isEquippedInitially: 0
   compatibleStyles: []

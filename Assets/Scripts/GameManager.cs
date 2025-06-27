@@ -1,12 +1,12 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System.Linq;
 using TMPro;
-using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
-[System.Serializable]
-public class PlayerInventory
+public class GameManager : MonoBehaviour
 {
+    public static GameManager Instance { get; private set; }
+
     [System.Serializable]
     public class InventoryItem
     {
@@ -14,95 +14,34 @@ public class PlayerInventory
         public bool isEquipped;
     }
 
-    public int maxItems = 5;
     public List<InventoryItem> items = new List<InventoryItem>();
+    private int totalCluesFound = 0;
+    private bool hasRevelationClue = false;
+    private const int totalCluesRequired = 6;
 
-    public void AddItem(string itemName)
-    {
-        if (items.Count >= maxItems)
-        {
-            InventoryPopup popup = GameObject.FindObjectOfType<InventoryPopup>();
-            if (popup != null)
-            {
-                popup.ShowMessage("Inventario lleno. No se puede agregar el item.");
-            }
-            return;
-        }
+    private HashSet<string> locationsVisited = new HashSet<string>();
+    private bool readyToShowSummary = false;
 
-        InventoryItem item = items.Find(i => i.itemName == itemName);
-        if (item != null)
-        {
-            item.isEquipped = true;
-        }
-        else
-        {
-            items.Add(new InventoryItem { itemName = itemName, isEquipped = true });
-        }
-    }
+    private HashSet<string> objetosRecolectados = new HashSet<string>(); // NUEVO
 
-    public bool HasItem(string itemName)
-    {
-        return items.Exists(i => i.itemName == itemName && i.isEquipped);
-    }
-}
-
-[System.Serializable]
-public class PlayerStyle
-{
     [System.Serializable]
-    public class StyleRequirement
+    public class OrderedDoor
     {
-        public string styleName;
-        public List<string> requiredItems = new List<string>();
+        public GameObject doorObject;
+        public string doorID;
     }
 
-    public List<StyleRequirement> styles = new List<StyleRequirement>();
-    public string currentStyle = "";
+    public List<OrderedDoor> orderedDoors = new List<OrderedDoor>();
+    public string colorLayerName = "ColorOnly";
+    private int currentIndex = 0;
 
-    public void AddStyle(string styleName, List<string> requiredItems)
-    {
-        styles.Add(new StyleRequirement
-        {
-            styleName = styleName,
-            requiredItems = requiredItems
-        });
-    }
+    [Header("UI de recordatorio")]
+    public GameObject summaryReminderUI;
 
-    public bool CanUseStyle(string styleName)
-    {
-        var style = styles.Find(s => s.styleName == styleName);
-        if (style != null)
-        {
-            foreach (var item in style.requiredItems)
-            {
-                if (!GameManager.Instance.playerInventory.HasItem(item))
-                {
-                    return false;
-                }
-            }
-            return true;
-        }
-        return false;
-    }
-
-    public void ChooseStyle(string styleName)
-    {
-        if (CanUseStyle(styleName))
-        {
-            currentStyle = styleName;
-        }
-    }
-}
-
-public class GameManager : MonoBehaviour
-{
-    public static GameManager Instance { get; private set; }
-
-    public PlayerInventory playerInventory = new PlayerInventory();
-
-    [SerializeField] private bool hasMadeStyleChoice = false;
-    private string currentStyle = "";
-    private string nextScene = "";
+    [Header("Finales")]
+    public string escenaFinalBueno = "FinalBueno";
+    public string escenaFinalMalo = "FinalMalo";
+    public string escenaConfrontacion = "Confrontacion";
 
     private void Awake()
     {
@@ -117,147 +56,171 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    public void ChooseAggressive()
+    private void Start()
     {
-        if (CanUseStyle("Aggressive") && !hasMadeStyleChoice)
+        UpdateDoorStates();
+    }
+
+    public void AddItem(string itemName, bool equip = false)
+    {
+        InventoryItem item = items.Find(i => i.itemName == itemName);
+        if (item == null)
         {
-            currentStyle = "Aggressive";
-            hasMadeStyleChoice = true;
-            RefreshInventoryUI();
+            items.Add(new InventoryItem { itemName = itemName, isEquipped = equip });
+        }
+        else if (equip)
+        {
+            item.isEquipped = true;
         }
     }
 
-    public void ChooseInvestigative()
+    public void EquipItem(string itemName)
     {
-        if (CanUseStyle("Investigative") && !hasMadeStyleChoice)
+        InventoryItem item = items.Find(i => i.itemName == itemName);
+        if (item != null)
         {
-            currentStyle = "Investigative";
-            hasMadeStyleChoice = true;
-            RefreshInventoryUI();
+            item.isEquipped = true;
         }
     }
 
-    public void ChooseStealth()
+    public void AddClue(string clueName, bool isRevelation = false)
     {
-        if (CanUseStyle("Stealth") && !hasMadeStyleChoice)
+        if (!HasItem(clueName))
         {
-            currentStyle = "Stealth";
-            hasMadeStyleChoice = true;
-            RefreshInventoryUI();
+            AddItem(clueName);
+            totalCluesFound++;
+            if (isRevelation) hasRevelationClue = true;
         }
     }
 
-    public string GetCurrentStyle() => currentStyle;
-    public bool HasMadeChoice() => hasMadeStyleChoice;
+    public bool HasAllClues() => totalCluesFound >= totalCluesRequired;
+    public bool HasRevelation() => hasRevelationClue;
+    public int GetClueCount() => totalCluesFound;
 
-    public bool CanUseStyle(string style)
+    public void MarkLocationVisited(string locationName)
     {
-        List<GameItem> requiredItems = InventoryManager.Instance.GetItemsByStyle(style);
-        foreach (GameItem item in requiredItems)
+        locationsVisited.Add(locationName);
+
+        if (HasVisitedAllKeyLocations() && summaryReminderUI != null)
         {
-            if (!InventoryManager.Instance.HasEquippedItem(item))
+            summaryReminderUI.SetActive(true);
+        }
+    }
+
+    public bool HasVisitedAllKeyLocations()
+    {
+        return locationsVisited.Contains("CrimeScene") &&
+               locationsVisited.Contains("NewspapperOffice") &&
+               locationsVisited.Contains("Bar");
+    }
+
+    public void CheckSummaryTrigger(string enteringScene)
+    {
+        readyToShowSummary = (enteringScene == "Oficina" && HasVisitedAllKeyLocations());
+
+        if (readyToShowSummary && summaryReminderUI != null)
+        {
+            summaryReminderUI.SetActive(false);
+        }
+    }
+
+    public bool ShouldShowSummary() => readyToShowSummary;
+
+    public bool HasItem(string itemName)
+    {
+        return items.Exists(i => i.itemName == itemName);
+    }
+
+    public bool IsEquipped(string itemName)
+    {
+        InventoryItem item = items.Find(i => i.itemName == itemName);
+        return item != null && item.isEquipped;
+    }
+
+    public void UnlockNextDoor()
+    {
+        if (currentIndex < orderedDoors.Count)
+        {
+            GameObject door = orderedDoors[currentIndex].doorObject;
+            door.layer = LayerMask.NameToLayer(colorLayerName);
+            door.SetActive(true);
+            currentIndex++;
+        }
+    }
+
+    public void NotifyDoorUsed(string doorID)
+    {
+        int usedIndex = orderedDoors.FindIndex(d => d.doorID == doorID);
+        if (usedIndex >= 0 && usedIndex + 1 < orderedDoors.Count)
+        {
+            GameObject nextDoor = orderedDoors[usedIndex + 1].doorObject;
+            nextDoor.layer = LayerMask.NameToLayer(colorLayerName);
+            nextDoor.SetActive(true);
+            currentIndex = Mathf.Max(currentIndex, usedIndex + 2);
+        }
+    }
+
+    public void UpdateDoorStates()
+    {
+        for (int i = 0; i < orderedDoors.Count; i++)
+        {
+            GameObject door = orderedDoors[i].doorObject;
+            bool isUnlocked = i < currentIndex;
+            door.SetActive(isUnlocked);
+            if (isUnlocked)
             {
-                return false;
+                door.layer = LayerMask.NameToLayer(colorLayerName);
             }
         }
-        return true;
-    }
-
-    public void UpdateStyleOptions()
-    {
-        GameObject uiCanvas = GameObject.Find("StyleSelectionUI");
-        if (uiCanvas != null)
-        {
-            Transform buttonsPanel = uiCanvas.transform.Find("Pannel General/Panel Buttons");
-            TMP_Text feedbackText = uiCanvas.transform.Find("FeedbackText")?.GetComponent<TMP_Text>();
-
-            if (buttonsPanel != null)
-            {
-                void SetButtonState(string style, Transform button)
-                {
-                    bool canUse = CanUseStyle(style);
-                    button.gameObject.SetActive(true);
-                    button.GetComponent<Button>().interactable = canUse;
-
-                    if (!canUse && feedbackText != null)
-                    {
-                        var missing = GetMissingItemsForStyle(style);
-                        feedbackText.text = $"Para {style} necesitas: {string.Join(", ", missing)}";
-                    }
-                }
-
-                SetButtonState("Aggressive", buttonsPanel.Find("AggressiveButton"));
-                SetButtonState("Investigative", buttonsPanel.Find("InvestigativeButton"));
-                SetButtonState("Stealth", buttonsPanel.Find("StealthButton"));
-            }
-        }
-    }
-
-    private List<string> GetMissingItemsForStyle(string style)
-    {
-        List<string> missing = new List<string>();
-        List<GameItem> requiredItems = InventoryManager.Instance.GetItemsByStyle(style);
-        foreach (var item in requiredItems)
-        {
-            if (!InventoryManager.Instance.HasEquippedItem(item))
-            {
-                missing.Add(item.itemName);
-            }
-        }
-        return missing;
-    }
-
-    public void SaveGame()
-    {
-        PlayerPrefs.SetString("SavedStyle", currentStyle);
-        List<GameItem> equipped = InventoryManager.Instance.GetEquippedItems();
-        List<string> equippedItemNames = equipped.Select(i => i.itemName).ToList();
-        PlayerPrefs.SetString("EquippedItems", string.Join(",", equippedItemNames));
-        PlayerPrefs.Save();
-    }
-
-    public void LoadGame()
-    {
-        currentStyle = PlayerPrefs.GetString("SavedStyle", "");
-        string equipped = PlayerPrefs.GetString("EquippedItems", "");
-        if (!string.IsNullOrEmpty(equipped))
-        {
-            string[] itemNames = equipped.Split(',');
-            foreach (string name in itemNames)
-            {
-                GameItem item = InventoryManager.Instance.FindItemByName(name);
-                if (item != null)
-                {
-                    InventoryManager.Instance.EquipItem(item);
-                }
-            }
-        }
-
-        RefreshInventoryUI();
     }
 
     public void ResetGame()
     {
-        hasMadeStyleChoice = false;
-        currentStyle = "";
-        InventoryManager.Instance.ResetInventory();
-        RefreshInventoryUI();
+        currentIndex = 0;
+        items.Clear();
+        totalCluesFound = 0;
+        hasRevelationClue = false;
+        locationsVisited.Clear();
+        readyToShowSummary = false;
+        objetosRecolectados.Clear(); // RESETEO de objetos recolectados
+        UpdateDoorStates();
     }
 
-    public void SetNextScene(string sceneName)
+    // === Lógica de objetos recolectables ===
+
+    public void MarcarRecolectado(string id)
     {
-        nextScene = sceneName;
+        if (!objetosRecolectados.Contains(id))
+        {
+            objetosRecolectados.Add(id);
+            Debug.Log($"Objeto recolectado: {id}");
+        }
     }
 
-    public string GetNextScene()
+    public bool YaFueRecolectado(string id)
     {
-        return nextScene;
+        return objetosRecolectados.Contains(id);
     }
 
-    public void RefreshInventoryUI()
+    // === Lógica de finales ===
+
+    public bool PuedeConfrontar()
     {
-        InventoryUIRenderer ui = FindObjectOfType<InventoryUIRenderer>();
-        if (ui != null)
-            ui.UpdateUI();
+        return HasItem("Pistola") && HasRevelation();
+    }
+
+    public void IrAJuicio()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(HasAllClues() ? escenaFinalBueno : escenaFinalMalo);
+    }
+
+    public void IrAConfrontacion()
+    {
+        if (PuedeConfrontar())
+        {
+            Time.timeScale = 1f;
+            SceneManager.LoadScene(escenaConfrontacion);
+        }
     }
 }

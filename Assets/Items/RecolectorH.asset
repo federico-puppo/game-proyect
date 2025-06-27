@@ -15,8 +15,11 @@ MonoBehaviour:
   itemName: Recolector de huellas
   type: 1
   description: Herramienta para recolectar huellas dactilares
-  icon: {fileID: 21300000, guid: dcec2dd4997123d408cdcf00c0443b63, type: 3}
+  icon: {fileID: 21300000, guid: 813157f2b372f924b928e1c89a9102a6, type: 3}
+  galleryImage: {fileID: 0}
   isKeyItem: 0
   isEvidence: 0
+  isRevelationClue: 0
+  isEquippedInitially: 1
   compatibleStyles:
   - Investigative
